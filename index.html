@@ -2,295 +2,171 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MARO GAMES PRO</title>
+<title>MARO GAMES - العب العاب مجانا</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght=400;700;900&display=swap');
-:root{--bg:#000;--card:#0a0a0a;--border:#222;--text:#fff;--accent:#fff}
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght=900&family=Cairo:wght=800;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'Cairo',Arial;overflow-x:hidden}
+body{background:#050505;color:#fff;font-family:'Cairo';overflow-x:hidden}
+header{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.9);backdrop-filter:blur(15px);padding:20px 5%;display:flex;justify-content:space-between;align-items:center;z-index:1000;border-bottom:2px solid #ff0033}
+.logo{font-family:'Orbitron';font-size:32px;background:linear-gradient(90deg,#ff0033,#00ffaa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:900}
+nav a{color:#fff;text-decoration:none;margin:0 15px;font-weight:800;transition:0.3s}
+nav a:hover{color:#ff0033}
 
-/* HEADER */
-header{position:sticky;top:0;background:rgba(0,0,0,0.95);backdrop-filter:blur(10px);padding:20px;border-bottom:1px solid var(--border);z-index:1000}
-.nav{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:auto}
-.logo{font-size:32px;font-weight:900;letter-spacing:2px}
-.menu{display:flex;gap:20px}
-.menu a{color:#aaa;text-decoration:none;font-weight:700;cursor:pointer}
-.menu a:hover{color:#fff}
+.hero{height:40vh;display:flex;align-items:center;justify-content:center;text-align:center;margin-top:80px;background:linear-gradient(rgba(255,0,51,0.2),#000)}
+.hero h1{font-size:60px}
+.hero p{font-size:22px;color:#00ffaa;margin-top:10px}
 
-/* HERO */
-.hero{text-align:center;padding:60px 20px}
-.hero h1{font-size:50px;margin-bottom:15px}
-.hero p{color:#888;font-size:18px}
+.section{padding:60px 5%}
+h2{font-size:40px;margin-bottom:30px;color:#ff0033;text-align:center}
 
-/* GAMES GRID */
-.container{max-width:1200px;margin:auto;padding:40px 20px}
-.section-title{font-size:30px;margin-bottom:30px;text-align:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:25px}
+.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:25px}
+.game-card{background:#111;border:2px solid #222;border-radius:20px;overflow:hidden;transition:0.4s;cursor:pointer}
+.game-card:hover{transform:translateY(-10px);border-color:#ff0033;box-shadow:0 15px 40px rgba(255,0,51,0.3)}
+.game-card img{width:100%;height:180px;object-fit:cover;background:#000}
+.game-card h3{padding:15px;font-size:20px;text-align:center}
+.play-btn{background:#ff0033;color:#000;border:none;padding:10px;width:90%;margin:0 5% 15px;border-radius:10px;font-size:18px;font-weight:900;cursor:pointer;transition:0.3s}
+.play-btn:hover{background:#00ffaa;transform:scale(1.05)}
 
-/* GAME CARD */
-.card{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:20px;transition:0.3s}
-.card:hover{border-color:#444;transform:translateY(-5px)}
-.card h3{font-size:22px;margin-bottom:10px}
-.card canvas{background:#000;border:1px solid var(--border);border-radius:10px;width:100%;height:280px;display:block;margin-bottom:12px;touch-action:none}
-.btn{width:100%;padding:12px;background:var(--accent);color:#000;border:none;border-radius:8px;font-size:16px;font-weight:900;cursor:pointer}
-.btn:hover{background:#ddd}
-.stats{display:flex;justify-content:space-between;margin-top:8px;font-size:14px;color:#888}
-
-/* MODAL */
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:2000;align-items:center;justify-content:center}
-.modal-content{background:var(--card);padding:30px;border-radius:15px;border:1px solid var(--border);text-align:center}
-.modal-content h2{margin-bottom:15px}
-
-/* FOOTER */
-footer{text-align:center;padding:40px;border-top:1px solid var(--border);color:#666;margin-top:50px}
-
-/* RESPONSIVE */
-@media(max-width:768px){.grid{grid-template-columns:1fr}.hero h1{font-size:35px}}
+footer{text-align:center;padding:40px;background:#000;border-top:2px solid #ff0033;margin-top:50px}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="nav">
-    <div class="logo">MARO GAMES</div>
-    <div class="menu">
-      <a onclick="scrollToSection('games')">الالعاب</a>
-      <a onclick="showModal('about')">عننا</a>
-    </div>
-  </div>
+  <div class="logo">MARO GAMES</div>
+  <nav>
+    <a href="#trending">رائجة</a>
+    <a href="#action">اكشن</a>
+    <a href="#cars">سيارات</a>
+    <a href="#puzzle">ذكاء</a>
+  </nav>
 </header>
 
 <section class="hero">
-  <h1>العب واتحدى اصحابك</h1>
-  <p>8 العاب احترافية شغالة 100% على الموبايل والكمبيوتر</p>
+  <div>
+    <h1>العب مجانا</h1>
+    <p>بدون تحميل • تشتغل على الموبايل</p>
+  </div>
 </section>
 
-<div class="container">
-  <h2 class="section-title" id="games">كل الالعاب</h2>
-  <div class="grid" id="gamesGrid"></div>
-</div>
-
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <h2 id="modalTitle"></h2>
-    <p id="modalText"></p>
-    <button class="btn" onclick="closeModal()" style="margin-top:20px">اغلاق</button>
+<!-- الالعاب الرائجة -->
+<section class="section" id="trending">
+  <h2>🔥 الالعاب الرائجة</h2>
+  <div class="games-grid">
+    <div class="game-card" onclick="openGame('https://poki.com/en/g/subway-surfers')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/d0b8c3a3a5e4e8e3a3b3c3d3e3f3g3h3/subway-surfers.png">
+      <h3>Subway Surfers</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
+    <div class="game-card" onclick="openGame('https://poki.com/en/g/temple-run-2')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/temple-run-2.png">
+      <h3>Temple Run 2</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
+    <div class="game-card" onclick="openGame('https://poki.com/en/g/drift-hunters')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/drift-hunters.png">
+      <h3>Drift Hunters</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
+    <div class="game-card" onclick="openGame('https://poki.com/en/g/2048')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/2048.png">
+      <h3>2048</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
   </div>
-</div>
+</section>
 
-<footer>© 2026 MARO GAMES PRO - جميع الحقوق محفوظة</footer>
+<!-- العاب اكشن -->
+<section class="section" id="action">
+  <h2>💥 العاب اكشن</h2>
+  <div class="games-grid">
+    <div class="game-card" onclick="openGame('https://poki.com/en/g/stickman-fight')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/stickman-fight.png">
+      <h3>Stickman Fight</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
+    <div class="game-card" onclick="openGame('https://poki.com/en/gun-mayhem')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/gun-mayhem.png">
+      <h3>Gun Mayhem</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
+    <div class="game-card" onclick="openGame('https://poki.com/en/g/rooftop-snipers')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/rooftop-snipers.png">
+      <h3>Rooftop Snipers</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
+    <div class="game-card" onclick="openGame('https://poki.com/en/g/zombie-derby')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/zombie-derby.png">
+      <h3>Zombie Derby</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
+  </div>
+</section>
+
+<!-- العاب سيارات -->
+<section class="section" id="cars">
+  <h2>🏎️ العاب سيارات</h2>
+  <div class="games-grid">
+    <div class="game-card" onclick="openGame('https://poki.com/en/g/madalin-stunt-cars-2')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/madalin-stunt-cars-2.png">
+      <h3>Madalin Stunt Cars</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
+    <div class="game-card" onclick="openGame('https://poki.com/en/g/car-rush')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/car-rush.png">
+      <h3>Car Rush</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
+    <div class="game-card" onclick="openGame('https://poki.com/en/g/moto-x3m')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/moto-x3m.png">
+      <h3>Moto X3M</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
+    <div class="game-card" onclick="openGame('https://poki.com/en/g/parking-fury')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/parking-fury.png">
+      <h3>Parking Fury</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
+  </div>
+</section>
+
+<!-- العاب ذكاء -->
+<section class="section" id="puzzle">
+  <h2>🧠 العاب ذكاء</h2>
+  <div class="games-grid">
+    <div class="game-card" onclick="openGame('https://poki.com/en/g/chess')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/chess.png">
+      <h3>Chess</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
+    <div class="game-card" onclick="openGame('https://poki.com/en/g/sudoku')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/sudoku.png">
+      <h3>Sudoku</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
+    <div class="game-card" onclick="openGame('https://poki.com/en/g/slope')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/slope.png">
+      <h3>Slope</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
+    <div class="game-card" onclick="openGame('https://poki.com/en/g/flappy-bird')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/flappy-bird.png">
+      <h3>Flappy Bird</h3>
+      <button class="play-btn">العب الان</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 MARO GAMES - كل الحقوق محفوظة</p>
+  <p>للدعم: 01022585692</p>
+</footer>
 
 <script>
-// ===== DATA =====
-const GAMES = [
-  {id:1,name:"سوسو 👗",desc:"لعبة تنسيق ملابس للبنات",high:0},
-  {id:2,name:"الثعبان الكلاسيك 🐍",desc:"كل ما تاكل تكبر",high:0},
-  {id:3,name:"تكسير الطوب 🧱",desc:"كسر كل الطوب",high:0},
-  {id:4,name:"بينج بونج 🏓",desc:"العبة ضد الكمبيوتر",high:0},
-  {id:5,name:"فلابي بيرد 🐦",desc:"عدي بين المواسير",high:0},
-  {id:6,name:"XO ❌⭕",desc:"لعبة اكس او",high:0},
-  {id:7,name:"ذاكرة 🧠",desc:"افتكر مكان الكروت",high:0},
-  {id:8,name:"2048 🔢",desc:"جمع الارقام",high:0}
-];
-
-// ===== RENDER GAMES =====
-const grid = document.getElementById('gamesGrid');
-GAMES.forEach(g=>{
-  grid.innerHTML += `
-  <div class="card">
-    <h3>${g.name}</h3>
-    <canvas id="game${g.id}" width="400" height="280"></canvas>
-    <button class="btn" onclick="startGame(${g.id})">ابدأ اللعبة</button>
-    <div class="stats">
-      <span>${g.desc}</span>
-      <span>اعلى نقاط: <b id="high${g.id}">${g.high}</b></span>
-    </div>
-  </div>`;
-});
-
-// ===== UTILS =====
-function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
-function showModal(type){
-  document.getElementById('modal').style.display='flex';
-  if(type=='about'){
-    document.getElementById('modalTitle').innerText='عن MARO GAMES';
-    document.getElementById('modalText').innerText='موقع العاب عربي احترافي. كل الالعاب شغالة بدون تحميل.';
-  }
+function openGame(url){
+  window.open(url, '_blank');
 }
-function closeModal(){document.getElementById('modal').style.display='none'}
-
-// ===== GAME 1: SOSO DRESS UP =====
-function startGame(id){
-  if(id==1) gameSoso();
-  if(id==2) gameSnake();
-  if(id==3) gameBreak();
-  if(id==4) gamePong();
-  if(id==5) gameFlappy();
-  if(id==6) gameXO();
-  if(id==7) gameMemory();
-  if(id==8) game2048();
-}
-
-let sosoState={hair:0,dress:0,points:0};
-function gameSoso(){
-  const c=document.getElementById('game1').getContext('2d');
-  const hairs=['طويل','قصير','كيرلي','ضفيرة'];
-  const dresses=['ازرق','اسود','ابيض','احمر'];
-  function draw(){
-    c.fillStyle='#000';c.fillRect(0,0,400,280);
-    c.fillStyle='#fff';c.font='14px Cairo';c.textAlign='center';
-    c.fillText('الشعر: '+hairs[sosoState.hair],200,20);
-    c.fillText('اللبس: '+dresses[sosoState.dress],200,40);
-    c.fillText('النقاط: '+sosoState.points,200,60);
-    // رسمة
-    c.fillStyle='#fdc';c.beginPath();c.arc(200,120,30,0,6.28);c.fill();
-    c.fillRect(185,150,30,60);
-    c.fillStyle=['#06f','#000','#fff','#f00'][sosoState.dress];
-    c.fillRect(170,150,60,80);
-    c.fillStyle='#542';if(sosoState.hair==0)c.fillRect(170,90,60,20);
-    if(sosoState.hair==1)c.fillRect(175,95,50,12);
-    if(sosoState.hair==2){for(let i=0;i<4;i++)c.beginPath(),c.arc(180+i*12,100,7,0,6.28),c.fill()}
-    if(sosoState.hair==3){c.fillRect(170,90,10,30);c.fillRect(220,90,10,30)}
-  }
-  draw();
-  document.getElementById('game1').onclick=e=>{
-    if(e.offsetY<130)sosoState.hair=(sosoState.hair+1)%4;else sosoState.dress=(sosoState.dress+1)%4;
-    sosoState.points+=10;draw();
-  }
-}
-
-// ===== GAME 2: SNAKE =====
-function gameSnake(){
-  const c=document.getElementById('game2').getContext('2d');
-  let snake=[{x:200,y:140}],dir={x:20,y:0},food={x:100,y:100},score=0,run=true;
-  function loop(){
-    if(!run)return;
-    c.fillStyle='#000';c.fillRect(0,0,400,280);
-    let head={x:snake[0].x+dir.x,y:snake[0].y+dir.y};
-    if(head.x<0||head.x>=400||head.y<0||head.y>=280||snake.some(s=>s.x==head.x&&s.y==head.y)){run=false;if(score>GAMES[1].high){GAMES[1].high=score;high2.innerText=score};alert('خلصت! '+score);return}
-    snake.unshift(head);
-    if(head.x==food.x&&head.y==food.y){score++;food.x=Math.floor(Math.random()*20)*20;food.y=Math.floor(Math.random()*14)*20;}else snake.pop();
-    c.fillStyle='#0f0';c.fillRect(food.x,food.y,20,20);
-    c.fillStyle='#fff';snake.forEach(s=>c.fillRect(s.x,s.y,20,20));
-    setTimeout(loop,100);
-  }
-  loop();
-  document.onkeydown=e=>{
-    if(e.key=='ArrowUp'&&dir.y==0)dir={x:0,y:-20};
-    if(e.key=='ArrowDown'&&dir.y==0)dir={x:0,y:20};
-    if(e.key=='ArrowLeft'&&dir.x==0)dir={x:-20,y:0};
-    if(e.key=='ArrowRight'&&dir.x==0)dir={x:20,y:0};
-  }
-}
-
-// ===== GAME 3: BREAKOUT =====
-function gameBreak(){
-  const c=document.getElementById('game3').getContext('2d');
-  let x=200,y=240,dx=3,dy=-3,px=160,bricks=[],score=0;
-  for(let r=0;r<4;r++)for(let col=0;col<8;col++)bricks.push({x:col*50,y:r*25+40});
-  function loop(){
-    c.fillStyle='#000';c.fillRect(0,0,400,280);
-    c.fillStyle='#fff';c.fillRect(px,260,80,10);
-    c.beginPath();c.arc(x,y,8,0,6.28);c.fill();
-    x+=dx;y+=dy;if(x<0||x>400)dx*=-1;if(y<0)dy*=-1;
-    if(x>px&&x<px+80&&y>252&&y<260)dy*=-1;
-    bricks.forEach((b,i)=>{c.fillRect(b.x,b.y,48,20);if(x>b.x&&x<b.x+48&&y>b.y&&y<b.y+20){dy*=-1;bricks.splice(i,1);score++}});
-    if(y>280){if(score>GAMES[2].high){GAMES[2].high=score;high3.innerText=score};alert('خلصت! '+score);return}
-    if(bricks.length==0){if(score>GAMES[2].high){GAMES[2].high=score;high3.innerText=score};alert('كسبت!');return}
-    requestAnimationFrame(loop);
-  }
-  loop();
-  document.getElementById('game3').onmousemove=e=>px=e.offsetX-40;
-}
-
-// ===== GAME 4: PONG =====
-function gamePong(){
-  const c=document.getElementById('game4').getContext('2d');
-  let py=100,by=140,bx=200,bdx=4,bdy=4,score=0;
-  function loop(){
-    c.fillStyle='#000';c.fillRect(0,0,400,280);
-    c.fillStyle='#fff';c.fillRect(10,py,10,60);
-    c.beginPath();c.arc(bx,by,8,0,6.28);c.fill();
-    bx+=bdx;by+=bdy;if(by<0||by>280)bdy*=-1;
-    if(bx<20&&by>py&&by<py+60){bdx*=-1;score++}
-    if(bx>400){if(score>GAMES[3].high){GAMES[3].high=score;high4.innerText=score};alert('خلصت! '+score);return}
-    requestAnimationFrame(loop);
-  }
-  loop();
-  document.getElementById('game4').onmousemove=e=>py=e.offsetY-30;
-}
-
-// ===== GAME 5: FLAPPY =====
-function gameFlappy(){
-  const c=document.getElementById('game5').getContext('2d');
-  let y=140,vy=0,pipes=[],score=0;
-  document.getElementById('game5').onclick=()=>vy=-5;
-  function loop(){
-    c.fillStyle='#000';c.fillRect(0,0,400,280);
-    vy+=0.3;y+=vy;c.fillStyle='#ff0';c.beginPath();c.arc(80,y,10,0,6.28);c.fill();
-    if(Math.random()<0.02)pipes.push({x:400,gap:Math.random()*100+60});
-    pipes.forEach(p=>{p.x-=3;c.fillStyle='#0f0';c.fillRect(p.x,0,40,p.gap);c.fillRect(p.x,p.gap+80,40,280);
-      if(p.x<90&&p.x>40&&y>p.gap&&y<p.gap+80)score++;
-      if(p.x<80&&p.x>40&&(y< p.gap || y> p.gap+80)){if(score>GAMES[4].high){GAMES[4].high=score;high5.innerText=score};alert('خلصت! '+score)}
-    });
-    pipes=pipes.filter(p=>p.x>-40);if(y>280||y<0)return;
-    requestAnimationFrame(loop);
-  }
-  loop();
-}
-
-// ===== GAME 6: XO =====
-let xoBoard=['','',''],xoTurn='X';
-function gameXO(){
-  const c=document.getElementById('game6').getContext('2d');
-  function draw(){
-    c.fillStyle='#000';c.fillRect(0,0,400,280);
-    c.strokeStyle='#fff';c.lineWidth=3;
-    for(let i=1;i<3;i++){c.beginPath();c.moveTo(i*133,0);c.lineTo(i*133,280);c.stroke();c.beginPath();c.moveTo(0,i*93);c.lineTo(400,i*93);c.stroke()}
-    xoBoard.forEach((v,i)=>{if(v){c.fillStyle='#fff';c.font='50px Arial';c.fillText(v,(i%3)*133+50,Math.floor(i/3)*93+65)}})
-  }
-  draw();
-  document.getElementById('game6').onclick=e=>{
-    let i=Math.floor(e.offsetX/133)+Math.floor(e.offsetY/93)*3;
-    if(xoBoard[i]==''){xoBoard[i]=xoTurn;xoTurn=xoTurn=='X'?'O':'X';draw()}
-  }
-}
-
-// ===== GAME 7: MEMORY =====
-function gameMemory(){
-  const c=document.getElementById('game7').getContext('2d');
-  let cards=[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8].sort(()=>Math.random()-0.5),flipped=[],matched=0;
-  function draw(){
-    c.fillStyle='#000';c.fillRect(0,0,400,280);
-    cards.forEach((v,i)=>{
-      c.fillStyle=flipped.includes(i)||matched>=8?'#0af':'#333';
-      c.fillRect((i%4)*100,Math.floor(i/4)*70,95,65);
-      if(flipped.includes(i)||matched>=8){c.fillStyle='#fff';c.font='30px Arial';c.fillText(v,(i%4)*100+40,Math.floor(i/4)*70+40)}
-    })
-  }
-  draw();
-  document.getElementById('game7').onclick=e=>{
-    let i=Math.floor(e.offsetX/100)+Math.floor(e.offsetY/70)*4;
-    if(!flipped.includes(i)){flipped.push(i);draw();
-      if(flipped.length==2){setTimeout(()=>flipped=[],500)}
-    }
-  }
-}
-
-// ===== GAME 8: 2048 =====
-function game2048(){
-  const c=document.getElementById('game8').getContext('2d');
-  let board=Array(16).fill(0);board[Math.floor(Math.random()*16)]=2;
-  function draw(){
-    c.fillStyle='#000';c.fillRect(0,0,400,280);
-    board.forEach((v,i)=>{c.fillStyle=v?'#555':'#222';c.fillRect((i%4)*100,Math.floor(i/4)*70,95,65);
-      if(v){c.fillStyle='#fff';c.font='25px Arial';c.fillText(v,(i%4)*100+35,Math.floor(i/4)*70+40)}
-    })
-  }
-  draw();
-}
-
 </script>
+
 </body>
 </html>
