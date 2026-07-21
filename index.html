@@ -2,64 +2,109 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>MARO GAMES</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARO GAMES - العب الاف الالعاب مجانا</title>
 <style>
-body{background:#0a0a0a;color:#fff;font-family:'Cairo',sans-serif;margin:0}
-header{background:#000;padding:15px;text-align:center;border-bottom:3px solid #7b2fff}
-.logo{font-size:30px;color:#7b2fff;font-weight:900}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:15px;padding:20px}
-.card{background:#111;border-radius:15px;cursor:pointer;border:2px solid #222;overflow:hidden}
-.card:hover{border-color:#7b2fff;transform:scale(1.05)}
-.card img{width:100%;height:150px;object-fit:cover}
-.card h3{padding:10px;text-align:center;font-size:15px}
-.game-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;display:none;flex-direction:column}
-.game-header{padding:15px;background:#000;display:flex;justify-content:space-between;border-bottom:3px solid #7b2fff}
-.close-btn{padding:10px 20px;background:#7b2fff;color:#fff;border:none;border-radius:10px;font-weight:900;cursor:pointer}
-.game-screen iframe{width:100%;flex:1;border:none}
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght=800;900&display=swap');
+:root{--main:#7b2fff;--sec:#00d4ff;--bg:#0a0a0a;--card:#111}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:#fff;font-family:'Cairo'}
+header{position:sticky;top:0;background:#000;padding:15px 5%;text-align:center;z-index:1000;border-bottom:2px solid var(--main)}
+.logo{font-size:32px;color:var(--main);font-weight:900}
+.categories{display:flex;gap:10px;padding:15px 5%;overflow-x:auto;background:#000}
+.cat-btn{padding:8px 20px;background:var(--card);border:2px solid #222;border-radius:20px;color:#fff;font-weight:800;cursor:pointer;white-space:nowrap}
+.cat-btn.active{background:var(--main);border-color:var(--main)}
+.container{padding:20px 5%}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:15px}
+.card{background:var(--card);border-radius:15px;overflow:hidden;cursor:pointer;transition:0.3s;border:2px solid #222}
+.card:hover{transform:translateY(-5px);border-color:var(--main);box-shadow:0 0 20px rgba(123,47,255,0.5)}
+.card img{width:100%;height:160px;object-fit:cover;background:var(--main)}
+.card h3{padding:10px;font-size:14px;text-align:center;height:45px;overflow:hidden}
 </style>
 </head>
 <body>
 
 <header><div class="logo">MARO GAMES</div></header>
 
-<div class="grid">
-  <div class="card" onclick="playGame('https://html5.gamemonetize.com/3ivzvhf9w9i3v1bq6g7q8w9e0r1t2y3u/')">
-    <img src="https://img.gamemonetize.com/3ivzvhf9w9i3v1bq6g7q8w9e0r1t2y3u/512x384.jpg">
-    <h3>Subway Runner</h3>
-  </div>
-
-  <div class="card" onclick="playGame('https://html5.gamemonetize.com/1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p/')">
-    <img src="https://img.gamemonetize.com/1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p/512x384.jpg">
-    <h3>Drift Boss</h3>
-  </div>
-
-  <div class="card" onclick="playGame('https://html5.gamemonetize.com/qwertyuiopasdfghjklzxcvbnm/')">
-    <img src="https://img.gamemonetize.com/qwertyuiopasdfghjklzxcvbnm/512x384.jpg">
-    <h3>Stickman Fight</h3>
-  </div>
-
-  <div class="card" onclick="playGame('https://html5.gamemonetize.com/zxcvbnmasdfghjklqwertyuiop/')">
-    <img src="https://img.gamemonetize.com/zxcvbnmasdfghjklqwertyuiop/512x384.jpg">
-    <h3>2048 Game</h3>
-  </div>
+<div class="categories">
+  <button class="cat-btn active" onclick="filterCat('all',this)">الكل</button>
+  <button class="cat-btn" onclick="filterCat('action',this)">💥 اكشن</button>
+  <button class="cat-btn" onclick="filterCat('cars',this)">🏎️ سيارات</button>
+  <button class="cat-btn" onclick="filterCat('puzzle',this)">🧠 ذكاء</button>
 </div>
 
-<div class="game-screen" id="gameScreen">
-  <div class="game-header">
-    <div class="logo">MARO GAMES</div>
-    <button class="close-btn" onclick="closeGame()">X اغلاق</button>
+<div class="container">
+  <div class="grid" id="gamesGrid">
+    
+    <!-- العاب من Poki -->
+    <div class="card" data-cat="action" onclick="openGame('https://poki.com/ar/g/subway-surfers')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/dc3905c8-c1f9-4e0a-8b0a-5c5b5b5b5b5b/subway-surfers.png">
+      <h3>Subway Surfers</h3>
+    </div>
+
+    <div class="card" data-cat="action" onclick="openGame('https://poki.com/ar/g/temple-run-2')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/a1b2c3d4-e5f6-7890-abcd-ef1234567890/temple-run-2.png">
+      <h3>Temple Run 2</h3>
+    </div>
+
+    <div class="card" data-cat="cars" onclick="openGame('https://poki.com/ar/g/drift-hunters')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/ drift-hunters.png">
+      <h3>Drift Hunters</h3>
+    </div>
+
+    <div class="card" data-cat="puzzle" onclick="openGame('https://poki.com/ar/g/2048')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/2048.png">
+      <h3>2048</h3>
+    </div>
+
+    <div class="card" data-cat="action" onclick="openGame('https://poki.com/ar/g/stickman-fight')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/stickman-fight.png">
+      <h3>Stickman Fight</h3>
+    </div>
+
+    <div class="card" data-cat="action" onclick="openGame('https://poki.com/ar/g/rooftop-snipers')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/rooftop-snipers.png">
+      <h3>Rooftop Snipers</h3>
+    </div>
+
+    <div class="card" data-cat="cars" onclick="openGame('https://poki.com/ar/g/madalin-stunt-cars-2')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/madalin-stunt-cars-2.png">
+      <h3>Madalin Stunt Cars 2</h3>
+    </div>
+
+    <div class="card" data-cat="cars" onclick="openGame('https://poki.com/ar/g/moto-x3m')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/moto-x3m.png">
+      <h3>Moto X3M</h3>
+    </div>
+
+    <div class="card" data-cat="puzzle" onclick="openGame('https://poki.com/ar/g/slope')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/slope.png">
+      <h3>Slope</h3>
+    </div>
+
+    <div class="card" data-cat="puzzle" onclick="openGame('https://poki.com/ar/g/flappy-bird')">
+      <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/flappy-bird.png">
+      <h3>Flappy Bird</h3>
+    </div>
+
   </div>
-  <iframe id="gameFrame" src="" allowfullscreen></iframe>
 </div>
 
 <script>
-function playGame(url){
-  document.getElementById('gameFrame').src = url;
-  document.getElementById('gameScreen').style.display = 'flex';
+function openGame(url){
+  window.open(url, '_blank'); // يفتح اللعبة في تبويب جديد على Poki
 }
-function closeGame(){
-  document.getElementById('gameScreen').style.display = 'none';
-  document.getElementById('gameFrame').src = '';
+
+function filterCat(cat,btn){
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.card').forEach(game=>{
+    if(cat=='all' || game.dataset.cat==cat){
+      game.style.display='block';
+    }else{
+      game.style.display='none';
+    }
+  })
 }
 </script>
 
