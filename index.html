@@ -2,90 +2,48 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MARO GAMES - العب الاف الالعاب مجانا</title>
+<title>MARO GAMES</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght=800;900&display=swap');
-:root{--main:#7b2fff;--sec:#00d4ff;--bg:#0a0a0a;--card:#111}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:#fff;font-family:'Cairo'}
-header{position:sticky;top:0;background:#000;padding:15px 5%;text-align:center;z-index:1000;border-bottom:2px solid var(--main)}
-.logo{font-size:32px;color:var(--main);font-weight:900}
-.categories{display:flex;gap:10px;padding:15px 5%;overflow-x:auto;background:#000}
-.cat-btn{padding:8px 20px;background:var(--card);border:2px solid #222;border-radius:20px;color:#fff;font-weight:800;cursor:pointer;white-space:nowrap}
-.cat-btn.active{background:var(--main);border-color:var(--main)}
-.container{padding:20px 5%}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:15px}
-.card{background:var(--card);border-radius:15px;overflow:hidden;cursor:pointer;transition:0.3s;border:2px solid #222}
-.card:hover{transform:translateY(-5px);border-color:var(--main);box-shadow:0 0 20px rgba(123,47,255,0.5)}
-.card img{width:100%;height:160px;object-fit:cover;background:var(--main)}
-.card h3{padding:10px;font-size:14px;text-align:center;height:45px;overflow:hidden}
+body{background:#0a0a0a;color:#fff;font-family:'Cairo',sans-serif;margin:0}
+header{background:#000;padding:15px;text-align:center;border-bottom:3px solid #7b2fff}
+.logo{font-size:30px;color:#7b2fff;font-weight:900}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:15px;padding:20px}
+.card{background:#111;border-radius:15px;cursor:pointer;border:2px solid #222;overflow:hidden}
+.card:hover{border-color:#7b2fff;transform:scale(1.05)}
+.card img{width:100%;height:150px;object-fit:cover}
+.card h3{padding:10px;text-align:center;font-size:15px}
 .game-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;display:none;flex-direction:column}
-.game-header{padding:15px;background:#000;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--main)}
-.close-btn{padding:10px 20px;background:var(--main);color:#fff;border:none;border-radius:10px;font-weight:900;cursor:pointer;font-size:16px}
+.game-header{padding:15px;background:#000;display:flex;justify-content:space-between;border-bottom:3px solid #7b2fff}
+.close-btn{padding:10px 20px;background:#7b2fff;color:#fff;border:none;border-radius:10px;font-weight:900;cursor:pointer}
 .game-screen iframe{width:100%;flex:1;border:none}
-@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 
 <header><div class="logo">MARO GAMES</div></header>
 
-<div class="categories">
-  <button class="cat-btn active" onclick="filterCat('all',this)">الكل</button>
-  <button class="cat-btn" onclick="filterCat('action',this)">💥 اكشن</button>
-  <button class="cat-btn" onclick="filterCat('cars',this)">🏎️ سيارات</button>
-  <button class="cat-btn" onclick="filterCat('puzzle',this)">🧠 ذكاء</button>
-</div>
+<div class="grid">
+  <div class="card" onclick="playGame('https://html5.gamemonetize.com/3ivzvhf9w9i3v1bq6g7q8w9e0r1t2y3u/')">
+    <img src="https://img.gamemonetize.com/3ivzvhf9w9i3v1bq6g7q8w9e0r1t2y3u/512x384.jpg">
+    <h3>Subway Runner</h3>
+  </div>
 
-<div class="container">
-  <div class="grid" id="gamesGrid">
-    
-    <!-- العاب شغالة 100% -->
-    <div class="card" data-cat="action" onclick="playGame('https://www.crazygames.com/embed/stickman-hook')">
-      <img src="https://img.crazygames.com/stickman-hook_16x9/20210712110125/stickman-hook-cover.jpg">
-      <h3>Stickman Hook</h3>
-    </div>
+  <div class="card" onclick="playGame('https://html5.gamemonetize.com/1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p/')">
+    <img src="https://img.gamemonetize.com/1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p/512x384.jpg">
+    <h3>Drift Boss</h3>
+  </div>
 
-    <div class="card" data-cat="cars" onclick="playGame('https://www.crazygames.com/embed/madalin-stunt-cars-2')">
-      <img src="https://img.crazygames.com/madalin-stunt-cars-2_16x9/20220517094409/madalin-stunt-cars-2-cover.jpg">
-      <h3>Madalin Stunt Cars 2</h3>
-    </div>
+  <div class="card" onclick="playGame('https://html5.gamemonetize.com/qwertyuiopasdfghjklzxcvbnm/')">
+    <img src="https://img.gamemonetize.com/qwertyuiopasdfghjklzxcvbnm/512x384.jpg">
+    <h3>Stickman Fight</h3>
+  </div>
 
-    <div class="card" data-cat="puzzle" onclick="playGame('https://www.crazygames.com/embed/2048')">
-      <img src="https://img.crazygames.com/2048_16x9/20220701101820/2048-cover.jpg">
-      <h3>2048</h3>
-    </div>
-
-    <div class="card" data-cat="action" onclick="playGame('https://www.crazygames.com/embed/rooftop-snipers')">
-      <img src="https://img.crazygames.com/rooftop-snipers_16x9/20210702100012/rooftop-snipers-cover.jpg">
-      <h3>Rooftop Snipers</h3>
-    </div>
-
-    <div class="card" data-cat="cars" onclick="playGame('https://www.crazygames.com/embed/moto-x3m')">
-      <img src="https://img.crazygames.com/moto-x3m_16x9/20220701101820/moto-x3m-cover.jpg">
-      <h3>Moto X3M</h3>
-    </div>
-
-    <div class="card" data-cat="puzzle" onclick="playGame('https://www.crazygames.com/embed/slope')">
-      <img src="https://img.crazygames.com/slope_16x9/20220701101820/slope-cover.jpg">
-      <h3>Slope</h3>
-    </div>
-
-    <div class="card" data-cat="action" onclick="playGame('https://www.crazygames.com/embed/zombie-derby-pixel-survival')">
-      <img src="https://img.crazygames.com/zombie-derby-pixel-survival_16x9/20220701101820/zombie-derby-cover.jpg">
-      <h3>Zombie Derby</h3>
-    </div>
-
-    <div class="card" data-cat="puzzle" onclick="playGame('https://www.crazygames.com/embed/flappy-bird')">
-      <img src="https://img.crazygames.com/flappy-bird_16x9/20220701101820/flappy-bird-cover.jpg">
-      <h3>Flappy Bird</h3>
-    </div>
-
+  <div class="card" onclick="playGame('https://html5.gamemonetize.com/zxcvbnmasdfghjklqwertyuiop/')">
+    <img src="https://img.gamemonetize.com/zxcvbnmasdfghjklqwertyuiop/512x384.jpg">
+    <h3>2048 Game</h3>
   </div>
 </div>
 
-<!-- شاشة اللعبة -->
 <div class="game-screen" id="gameScreen">
   <div class="game-header">
     <div class="logo">MARO GAMES</div>
@@ -98,25 +56,11 @@ header{position:sticky;top:0;background:#000;padding:15px 5%;text-align:center;z
 function playGame(url){
   document.getElementById('gameFrame').src = url;
   document.getElementById('gameScreen').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
 }
 function closeGame(){
   document.getElementById('gameScreen').style.display = 'none';
   document.getElementById('gameFrame').src = '';
-  document.body.style.overflow = 'auto';
 }
-function filterCat(cat,btn){
-  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.card').forEach(game=>{
-    if(cat=='all' || game.dataset.cat==cat){
-      game.style.display='block';
-    }else{
-      game.style.display='none';
-    }
-  })
-}
-document.addEventListener('keydown', e=>{if(e.key==='Escape') closeGame()})
 </script>
 
 </body>
