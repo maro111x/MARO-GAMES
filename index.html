@@ -2,120 +2,84 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MARO GAMES - العب الاف الالعاب مجانا</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght=900&family=Cairo:wght=700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght=800;900&display=swap');
 :root{--main:#7b2fff;--sec:#00d4ff;--bg:#0a0a0a;--card:#111}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:#fff;font-family:'Cairo'}
-
-/* الهيدر */
-header{position:sticky;top:0;background:#000;padding:15px 5%;display:flex;align-items:center;gap:20px;z-index:1000;border-bottom:2px solid var(--main)}
-.logo{font-family:'Orbitron';font-size:28px;background:linear-gradient(90deg,var(--main),var(--sec));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:900}
-.search{flex:1;background:var(--card);border:2px solid #222;border-radius:25px;padding:12px 20px;color:#fff;font-size:16px;outline:none}
-.search:focus{border-color:var(--main)}
-
-/* التصنيفات */
-.categories{display:flex;gap:15px;padding:20px 5%;overflow-x:auto;background:#000}
-.cat-btn{padding:10px 25px;background:var(--card);border:2px solid #222;border-radius:20px;color:#fff;font-weight:800;cursor:pointer;white-space:nowrap}
-.cat-btn.active,.cat-btn:hover{background:linear-gradient(90deg,var(--main),var(--sec));color:#000;border-color:var(--main)}
-
-/* الشبكة */
+header{position:sticky;top:0;background:#000;padding:15px 5%;text-align:center;z-index:1000;border-bottom:2px solid var(--main)}
+.logo{font-size:32px;color:var(--main);font-weight:900}
+.categories{display:flex;gap:10px;padding:15px 5%;overflow-x:auto;background:#000}
+.cat-btn{padding:8px 20px;background:var(--card);border:2px solid #222;border-radius:20px;color:#fff;font-weight:800;cursor:pointer;white-space:nowrap}
+.cat-btn.active{background:var(--main);border-color:var(--main)}
 .container{padding:20px 5%}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:15px}
 .card{background:var(--card);border-radius:15px;overflow:hidden;cursor:pointer;transition:0.3s;border:2px solid #222}
-.card:hover{transform:translateY(-8px);border-color:var(--main);box-shadow:0 10px 30px rgba(123,47,255,0.4)}
-.card img{width:100%;height:180px;object-fit:cover;background:linear-gradient(135deg,var(--main),var(--sec))}
-.card h3{padding:12px;font-size:16px;text-align:center}
-
-/* نافذة اللعبة */
+.card:hover{transform:translateY(-5px);border-color:var(--main);box-shadow:0 0 20px rgba(123,47,255,0.5)}
+.card img{width:100%;height:160px;object-fit:cover;background:var(--main)}
+.card h3{padding:10px;font-size:14px;text-align:center;height:45px;overflow:hidden}
 .game-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;display:none;flex-direction:column}
 .game-header{padding:15px;background:#000;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--main)}
-.close-btn{padding:10px 20px;background:var(--main);color:#fff;border:none;border-radius:10px;font-weight:900;cursor:pointer}
+.close-btn{padding:10px 20px;background:var(--main);color:#fff;border:none;border-radius:10px;font-weight:900;cursor:pointer;font-size:16px}
 .game-screen iframe{width:100%;flex:1;border:none}
-
-/* الموبايل */
 @media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">MARO GAMES</div>
-  <input class="search" type="text" placeholder="ابحث عن لعبة..." onkeyup="searchGame(this.value)">
-</header>
+<header><div class="logo">MARO GAMES</div></header>
 
 <div class="categories">
   <button class="cat-btn active" onclick="filterCat('all',this)">الكل</button>
-  <button class="cat-btn" onclick="filterCat('trending',this)">🔥 رائجة</button>
   <button class="cat-btn" onclick="filterCat('action',this)">💥 اكشن</button>
   <button class="cat-btn" onclick="filterCat('cars',this)">🏎️ سيارات</button>
   <button class="cat-btn" onclick="filterCat('puzzle',this)">🧠 ذكاء</button>
-  <button class="cat-btn" onclick="filterCat('shooting',this)">🎯 رماية</button>
 </div>
 
 <div class="container">
   <div class="grid" id="gamesGrid">
     
-    <!-- انسخ الكارد ده وعدل البيانات -->
-    <div class="card" data-cat="trending" data-name="subway surfers" onclick="playGame('https://poki.com/en/g/subway-surfers')">
-      <img src="https://images.poki.com/7d2b3c4a5e6f7g8h9i0j1k2l3m4n5o6p/subway-surfers-icon.png">
-      <h3>Subway Surfers</h3>
+    <!-- العاب شغالة 100% -->
+    <div class="card" data-cat="action" onclick="playGame('https://www.crazygames.com/embed/stickman-hook')">
+      <img src="https://img.crazygames.com/stickman-hook_16x9/20210712110125/stickman-hook-cover.jpg">
+      <h3>Stickman Hook</h3>
     </div>
 
-    <div class="card" data-cat="trending" data-name="temple run 2" onclick="playGame('https://poki.com/en/g/temple-run-2')">
-      <img src="https://images.poki.com/a1s2d3f4g5h6j7k8l9z0x1c2v3b4n5m/temple-run-2-icon.png">
-      <h3>Temple Run 2</h3>
+    <div class="card" data-cat="cars" onclick="playGame('https://www.crazygames.com/embed/madalin-stunt-cars-2')">
+      <img src="https://img.crazygames.com/madalin-stunt-cars-2_16x9/20220517094409/madalin-stunt-cars-2-cover.jpg">
+      <h3>Madalin Stunt Cars 2</h3>
     </div>
 
-    <div class="card" data-cat="cars" data-name="drift hunters" onclick="playGame('https://poki.com/en/g/drift-hunters')">
-      <img src="https://images.poki.com/q1w2e3r4t5y6u7i8o9p0a1s2d3f4g5/drift-hunters-icon.png">
-      <h3>Drift Hunters</h3>
-    </div>
-
-    <div class="card" data-cat="puzzle" data-name="2048" onclick="playGame('https://poki.com/en/g/2048')">
-      <img src="https://images.poki.com/z9x8c7v6b5n4m3l2k1j0h9g8f7d6s5/2048-icon.png">
+    <div class="card" data-cat="puzzle" onclick="playGame('https://www.crazygames.com/embed/2048')">
+      <img src="https://img.crazygames.com/2048_16x9/20220701101820/2048-cover.jpg">
       <h3>2048</h3>
     </div>
 
-    <div class="card" data-cat="action" data-name="stickman fight" onclick="playGame('https://poki.com/en/g/stickman-fight')">
-      <img src="https://images.poki.com/stickman-fight-game-icon.png">
-      <h3>Stickman Fight</h3>
-    </div>
-
-    <div class="card" data-cat="action" data-name="gun mayhem" onclick="playGame('https://poki.com/en/g/gun-mayhem')">
-      <img src="https://images.poki.com/gun-mayhem-2-icon.png">
-      <h3>Gun Mayhem</h3>
-    </div>
-
-    <div class="card" data-cat="shooting" data-name="rooftop snipers" onclick="playGame('https://poki.com/en/g/rooftop-snipers')">
-      <img src="https://images.poki.com/rooftop-snipers-icon.png">
+    <div class="card" data-cat="action" onclick="playGame('https://www.crazygames.com/embed/rooftop-snipers')">
+      <img src="https://img.crazygames.com/rooftop-snipers_16x9/20210702100012/rooftop-snipers-cover.jpg">
       <h3>Rooftop Snipers</h3>
     </div>
 
-    <div class="card" data-cat="cars" data-name="madalin stunt cars" onclick="playGame('https://poki.com/en/g/madalin-stunt-cars-2')">
-      <img src="https://images.poki.com/madalin-stunt-cars-2-icon.png">
-      <h3>Madalin Stunt Cars</h3>
-    </div>
-
-    <div class="card" data-cat="cars" data-name="moto x3m" onclick="playGame('https://poki.com/en/g/moto-x3m')">
-      <img src="https://images.poki.com/moto-x3m-icon.png">
+    <div class="card" data-cat="cars" onclick="playGame('https://www.crazygames.com/embed/moto-x3m')">
+      <img src="https://img.crazygames.com/moto-x3m_16x9/20220701101820/moto-x3m-cover.jpg">
       <h3>Moto X3M</h3>
     </div>
 
-    <div class="card" data-cat="puzzle" data-name="slope" onclick="playGame('https://poki.com/en/g/slope')">
-      <img src="https://images.poki.com/slope-game-icon.png">
+    <div class="card" data-cat="puzzle" onclick="playGame('https://www.crazygames.com/embed/slope')">
+      <img src="https://img.crazygames.com/slope_16x9/20220701101820/slope-cover.jpg">
       <h3>Slope</h3>
     </div>
 
-    <div class="card" data-cat="puzzle" data-name="flappy bird" onclick="playGame('https://poki.com/en/g/flappy-bird')">
-      <img src="https://images.poki.com/flappy-bird-icon.png">
-      <h3>Flappy Bird</h3>
+    <div class="card" data-cat="action" onclick="playGame('https://www.crazygames.com/embed/zombie-derby-pixel-survival')">
+      <img src="https://img.crazygames.com/zombie-derby-pixel-survival_16x9/20220701101820/zombie-derby-cover.jpg">
+      <h3>Zombie Derby</h3>
     </div>
 
-    <div class="card" data-cat="puzzle" data-name="chess" onclick="playGame('https://poki.com/en/g/chess')">
-      <img src="https://images.poki.com/chess-online-icon.png">
-      <h3>Chess</h3>
+    <div class="card" data-cat="puzzle" onclick="playGame('https://www.crazygames.com/embed/flappy-bird')">
+      <img src="https://img.crazygames.com/flappy-bird_16x9/20220701101820/flappy-bird-cover.jpg">
+      <h3>Flappy Bird</h3>
     </div>
 
   </div>
@@ -125,29 +89,26 @@ header{position:sticky;top:0;background:#000;padding:15px 5%;display:flex;align-
 <div class="game-screen" id="gameScreen">
   <div class="game-header">
     <div class="logo">MARO GAMES</div>
-    <button class="close-btn" onclick="closeGame()">X اغلاق اللعبة</button>
+    <button class="close-btn" onclick="closeGame()">X اغلاق</button>
   </div>
-  <iframe id="gameFrame" src=""></iframe>
+  <iframe id="gameFrame" src="" allowfullscreen></iframe>
 </div>
 
 <script>
-let allGames = document.querySelectorAll('.card');
-
 function playGame(url){
   document.getElementById('gameFrame').src = url;
   document.getElementById('gameScreen').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
 }
-
 function closeGame(){
   document.getElementById('gameScreen').style.display = 'none';
   document.getElementById('gameFrame').src = '';
+  document.body.style.overflow = 'auto';
 }
-
 function filterCat(cat,btn){
   document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  
-  allGames.forEach(game=>{
+  document.querySelectorAll('.card').forEach(game=>{
     if(cat=='all' || game.dataset.cat==cat){
       game.style.display='block';
     }else{
@@ -155,18 +116,6 @@ function filterCat(cat,btn){
     }
   })
 }
-
-function searchGame(val){
-  val = val.toLowerCase();
-  allGames.forEach(game=>{
-    if(game.dataset.name.includes(val)){
-      game.style.display='block';
-    }else{
-      game.style.display='none';
-    }
-  })
-}
-
 document.addEventListener('keydown', e=>{if(e.key==='Escape') closeGame()})
 </script>
 
